@@ -11,7 +11,8 @@
     "client-install": "cd client && npm install",
     "install-all": "concurrently \"npm run server-install\" \"npm run client-install\" ",
     "dev": "concurrently \"npm run server\" \"npm run client\" ",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,7 @@
     "socket.io": "^3.1.2"
   },
   "devDependencies": {
+    "jest": "^29.3.1",
     "nodemon": "^2.0.7"
   }
 }
