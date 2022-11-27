@@ -13,4 +13,8 @@ async function connect(url) {
 	}
 }
 
-module.exports = { connect };
+async function disconnect() {
+	await mongoose.disconnect();
+}
+
+module.exports = { connect, disconnect };
