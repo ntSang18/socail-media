@@ -1,6 +1,7 @@
 const request = require("supertest");
 const app = require("../app");
 const setupTestDB = require("./utils/setupTestDB");
+const Users = require("../models/userModel");
 
 setupTestDB();
 
@@ -32,6 +33,9 @@ describe("auth routes", () => {
 					password: "",
 				},
 			});
+
+			const dbUser = await Users.findById(res.body.user._id);
+			expect(dbUser).toBeDefined();
 		});
 
 		test("Return status 400 if user name already exists", async () => {
