@@ -17,7 +17,7 @@ describe("login", () => {
 		expect(res.status).toBe(200);
 		token = res.body.access_token;
 	});
-})
+});
 
 describe("comment routes", () => {
 	let comment;
@@ -31,8 +31,8 @@ describe("comment routes", () => {
 			newComment = {
 				postId: "6384b7a61a0739adb65f8d0c",
 				content: "test content",
-				postUserId: "63837dee6a89b5efe2323005",
-				reply: "638df2bf21755af4ee869da2",
+				postUserId: "63839f3e0ca6c9bc4b6ca339",
+				reply: "638dfbbc215fe285fc9c858e",
 			};
 		});
 
@@ -48,8 +48,8 @@ describe("comment routes", () => {
 					content: "test content",
 					user: "63839f3e0ca6c9bc4b6ca339",
 					postId: "6384b7a61a0739adb65f8d0c",
-					postUserId: "63837dee6a89b5efe2323005",
-					reply: "638df2bf21755af4ee869da2",
+					postUserId: "63839f3e0ca6c9bc4b6ca339",
+					reply: "638dfbbc215fe285fc9c858e",
 					_id: expect.anything(),
 				},
 			});
