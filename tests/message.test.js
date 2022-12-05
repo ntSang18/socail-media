@@ -4,10 +4,21 @@ const setupTestDB = require("./utils/setupTestDB");
 const Messages = require("../models/messageModel");
 const Conversations = require("../models/conversationModel");
 
-const token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODM5ZjNlMGNhNmM5YmM0YjZjYTMzOSIsImlhdCI6MTY2OTU3MDc5NywiZXhwIjoxNjY5NjU3MTk3fQ.E6eHh26JAK__PTF3iULybg-zxJnBP7z-uum0RHo5aYA";
+var token;
 
 setupTestDB();
+
+describe("login", () => {
+	test("Return status 200 and data if email and password correct", async () => {
+		const res = await request(app).post("/api/login").send({
+			email: "thanhsang6325@gmail.com",
+			password: "123456",
+		});
+
+		expect(res.status).toBe(200);
+		token = res.body.access_token;
+	});
+});
 
 describe("message routes", () => {
 	describe("POST /api/message", () => {

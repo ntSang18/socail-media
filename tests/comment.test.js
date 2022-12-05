@@ -3,10 +3,21 @@ const app = require("../app");
 const setupTestDB = require("./utils/setupTestDB");
 const Comments = require("../models/commentModel");
 
-const token =
-	"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODM5ZjNlMGNhNmM5YmM0YjZjYTMzOSIsImlhdCI6MTY2OTU3MDc5NywiZXhwIjoxNjY5NjU3MTk3fQ.E6eHh26JAK__PTF3iULybg-zxJnBP7z-uum0RHo5aYA";
+var token;
 
 setupTestDB();
+
+describe("login", () => {
+	test("Return status 200 and data if email and password correct", async () => {
+		const res = await request(app).post("/api/login").send({
+			email: "thanhsang6325@gmail.com",
+			password: "123456",
+		});
+
+		expect(res.status).toBe(200);
+		token = res.body.access_token;
+	});
+})
 
 describe("comment routes", () => {
 	let comment;
@@ -18,10 +29,10 @@ describe("comment routes", () => {
 		let newComment;
 		beforeEach(() => {
 			newComment = {
-				postId: "637243682a8dbdbcb39a1180",
+				postId: "6384b7a61a0739adb65f8d0c",
 				content: "test content",
 				postUserId: "63837dee6a89b5efe2323005",
-				reply: "6383a2d1af073af800570403",
+				reply: "638df2bf21755af4ee869da2",
 			};
 		});
 
@@ -36,9 +47,9 @@ describe("comment routes", () => {
 				newComment: {
 					content: "test content",
 					user: "63839f3e0ca6c9bc4b6ca339",
-					postId: "637243682a8dbdbcb39a1180",
+					postId: "6384b7a61a0739adb65f8d0c",
 					postUserId: "63837dee6a89b5efe2323005",
-					reply: "6383a2d1af073af800570403",
+					reply: "638df2bf21755af4ee869da2",
 					_id: expect.anything(),
 				},
 			});
